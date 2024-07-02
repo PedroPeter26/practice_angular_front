@@ -1,0 +1,32 @@
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="form-container">
+  <h1>Login</h1>
+  
+  <!-- UID -->
+  <mat-form-field class="example-full-width">
+    <mat-label>Username or Email or Phone</mat-label>
+    <input matInput formControlName="uid">
+    <mat-error *ngIf="loginForm.get('uid')?.hasError('required')">Nickname or Email or Phone is required</mat-error>
+  </mat-form-field> <br>
+  
+  <!-- Password -->
+  <mat-form-field class="example-full-width">
+    <mat-label>Password</mat-label>
+    <input matInput formControlName="password" type="password">
+    <mat-error *ngIf="loginForm.get('password')?.hasError('required')">Password is required</mat-error>
+  </mat-form-field> <br>
+  
+  <!-- Error message -->
+  <div *ngIf="errorMessage" class="error-message">
+    {{ errorMessage }}
+  </div>
+  
+  <!-- Button submit -->
+  <div class="example-button-row">
+    <button mat-raised-button color="primary" type="submit">Submit</button>
+  </div>
+
+  <!-- Link to Singin -->
+  <p class="example-button-row">
+    ¿No tienes una cuenta? <a routerLink="/singin">Regístrate</a>
+  </p>
+</form>
